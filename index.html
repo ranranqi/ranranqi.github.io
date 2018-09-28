@@ -62,6 +62,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-原型与原型链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/28/原型与原型链/" class="article-date">
+  <time datetime="2018-09-28T12:44:26.000Z" itemprop="datePublished">2018-09-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/28/原型与原型链/">原型与原型链</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  全局对象<br>  在标准里面这个对象叫global，但在浏览器里我们称之为window。为浏览器的内置的功能为了让写js时去调用，比如：<code>global.parseInt</code>和<code>global.parseFloat</code>等。<br>  生成一个对象时首先先生成一个global存入一个地址就是window的地址，window里有parseInt,parseFloat等函数。<br>  window就是一个哈希表，有很多的属性。window的属性就是全局变量。<br>  这些全局变量分两种：<br>  第一种：ECMAScript规定的。<br>  如：global.parseInt，global.parseFloat，global.Number,global.String,global.Boolean,global.Object.等。<br>  第二种：浏览器私有的。比如几个与用户交互的函数，window.alret(弹框提示)，window.prompt(用户填写)，window.comfirm(用户确认),window.console.log()等等，还有最常见的window.document.createElement,window.document.getElementById.等。</p>
+<p>简单类型与对象的区别<br>例如：<code>var n1 = 1</code>与<code>var n2 = new Number(1)</code>的区别：内存不同。<br><code>var n1 = 1</code>就存了一个 1。</p>
+<p><img src="/2018/09/28/原型与原型链/1.png" alt=""><br>而<code>var n2 = new Number(1)</code>则是把 1 包装成了一个对象。里面有一些便捷的函数可供使用。</p>
+<p><img src="/2018/09/28/原型与原型链/3.png" alt=""></p>
+<p>全局函数：Number，String，Boolean，Object。<br>前三种基本类型通过temp封装成复杂类型。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var n = 1</span><br><span class="line">n.toString()</span><br><span class="line">//&quot;1&quot;</span><br></pre></td></tr></table></figure></p>
+<p>实际上是通过临时转换把简单类型转化为复杂类型或对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">temp = new Number(n)</span><br><span class="line">temp.toString()</span><br></pre></td></tr></table></figure></p>
+<p>然后把这个temp拿掉，通过这种转换来实现<code>n.toString()//&quot;1&quot;</code>。</p>
+<p><strong>公用属性（原型）</strong>：每一个对象都有一些相同的函数时，如果把他们都放在每一个对象里这样就很占内存，为了少占内存我们把它取出来放在同一个对象里，让其他的对象来共用它，这就是公用属性即 <strong>原型（prototype）</strong>。<br>然后我们用过<strong>proto</strong>：来调用这个公用属性。</p>
+<p>所有对象的公用属性都是Object.prototype.<br>其次是Number有Number公用属性Number.prototype，String有String公用属性String.prototype，Boolean有Boolean公用属性Boolean.prototype。这三种最后都会指向Object.prototype，当然普通对象object的公用属性就直接指向Object.prototype。</p>
+<p>比如我们在声明一个Number时，就不能指向这个公用函数，因为Number有他自己私有的prototype和<strong>proto</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Number.prototype</span><br><span class="line">var n1 = new Number(1)</span><br><span class="line">n1__proto__ = Number.prototype</span><br><span class="line">n1__proto__.__proto__ = Object.prototype.（这就是我们讲的-所有对象的公用属性都是Object.prototype.）</span><br></pre></td></tr></table></figure></p>
+<p>Object.prototype对象也有<strong>proto</strong>，但它比较特殊，为null。<br><code>Object.prototype.__proto__ === null</code></p>
+<p><strong>原型链</strong>：简单理解就是原型组成的链，对象的<strong>proto</strong>是它的是原型，而原型也是一个对象，也有<strong>proto</strong>属性，原型的<strong>proto</strong>又是原型的原型，就这样可以一直通过<strong>proto</strong>向上找，这就是原型链，当向上找找到Object的原型的时候，这条原型链就算到头了。<br><code>n1__proto__ = Number.prototype --&gt;n1__proto__.__proto__= Object.prototype --&gt; Object.prototype.__proto__ === null</code></p>
+<p>通过以上我们可以得出一个式子：“ var 对象 = new 函数 ”<br>那么： 对象.__proto === 对象构造的函数.prototype</p>
+<p>// 推论<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var number = new Number()</span><br><span class="line">number.__proto__ = Number.prototype</span><br><span class="line">Number.__proto__ = Function.prototype // 因为 Number 是 Function 的实例</span><br><span class="line"></span><br><span class="line">var object = new Object()</span><br><span class="line">object.__proto__ = Object.prototype</span><br><span class="line">Object.__proto__ = Function.prototype // 因为 Object 是 Function 的实例</span><br><span class="line"></span><br><span class="line">var function = new Function()</span><br><span class="line">function.__proto__ = Function.prototype</span><br><span class="line">Function.__proto__ == Function.prototye // 因为 Function 是 Function 的实例！</span><br></pre></td></tr></table></figure></p>
+<p><strong>proto</strong>与prototye的区别：<strong>proto</strong>是对象的属性，prototy是函数的属性。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/28/原型与原型链/" data-id="cjmmcaiji0000396ic3nw617s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用hexo之前的简书博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/27/使用hexo之前的简书博客/" class="article-date">
@@ -89,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/使用hexo之前的简书博客/" data-id="cjmk9r2wd0001y66i4ph77yk9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/27/使用hexo之前的简书博客/" data-id="cjmmcaikd0002396i5d80hnap" class="article-share-link">Share</a>
       
       
     </footer>
@@ -161,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/JS里的数据类型转换/" data-id="cjmk9r2w80000y66ijn4dxf7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/27/JS里的数据类型转换/" data-id="cjmmcaika0001396ii10dm8cs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,6 +251,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/09/28/原型与原型链/">原型与原型链</a>
+          </li>
         
           <li>
             <a href="/2018/09/27/使用hexo之前的简书博客/">使用hexo之前的简书博客</a>
