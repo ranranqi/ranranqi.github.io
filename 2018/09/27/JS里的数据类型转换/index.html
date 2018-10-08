@@ -125,7 +125,7 @@
 <h4 id="五，深拷贝与浅拷贝的概念"><a href="#五，深拷贝与浅拷贝的概念" class="headerlink" title="五，深拷贝与浅拷贝的概念"></a>五，深拷贝与浅拷贝的概念</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">bar b = a </span><br><span class="line">b = 2</span><br><span class="line">a = ？</span><br><span class="line">//a = 1</span><br></pre></td></tr></table></figure>
 <p>上面代码表示b变不影响a，如果能实现这样的，简单类型除对象的赋值就叫做深拷贝！</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;name:&apos;a&apos;&#125;</span><br><span class="line">var b = a</span><br><span class="line">b.name = &apos;b&apos;</span><br><span class="line">a.name ?</span><br><span class="line">//a.name = &apos;b&apos;</span><br></pre></td></tr></table></figure>
-<p>b变化导致a也跟着变化，这就叫做拷贝。</p>
+<p>b变化导致a也跟着变化，这就叫做浅拷贝。</p>
 
 					</div>
 
