@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title> AJAX | Just For Fun </title>
+	<meta property="og:title" content=" AJAX | Just For Fun " />
+	<meta name="twitter:title" content=" AJAX | Just For Fun ">
+
+	<meta property="og:type" content="article">
+	<meta name="twitter:card" content="summary">
+
+	<meta name="description" content=" AJAX | Just For Fun ">
+	<meta property="og:description" content=" AJAX | Just For Fun " />
+	<meta name="twitter:description" content=" AJAX | Just For Fun " />
+
+	<link rel="icon" type="image/x-icon" href="http://yoursite.com//asset/img/favicon.jpeg">
+
+	<link rel="image_src" href="http://yoursite.com//asset/img/logo.jpeg" >
+	<meta property="og:image" content="http://yoursite.com//asset/img/logo.jpeg" />
+
+	<link href="http://yoursite.com/atom.xml" title="Just For Fun" type="application/atom+xml" rel="alternative">
+
+	<link rel="canonical" href="/2018/10/21/AJAX/index.html">
+
+	<link rel="stylesheet" href="/asset/css/style.css">
+
+</head>
+
+<body>
+
+	<div class="layout-header">
+		<header class="header">
+			<div class="layout-logo">
+				<div class="panel-logo">
+
+					<div class="box-logo">
+						<a href="/" title="Just For Fun"><img src="/asset/img/logo.jpeg" class="img-logo"></a>
+					</div>
+					<div class="box-main-title">
+						<h1><a href="/">Just For Fun</a></h1>
+					</div>
+					<div class="box-sub-title">
+
+					</div>
+				</div>
+			</div>
+			<div class="layout-menu">
+				<div class="box-menu-list">
+					<nav class="page-nav">
+						<ul class="menu-list">
+
+							<li class="box-menu-item"><a href="/"><span class="menu-item">Home</span></a></li>
+
+							<li class="box-menu-item"><a href="/archives"><span class="menu-item">Sitemap</span></a></li>
+
+							<li class="box-menu-item"><a href="/page/"><span class="menu-item">Page</span></a></li>
+
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+		</header>
+	</div>
+
+	<div class="layout-content">
+
+
+		<div class="row panel-content panel-post-item">
+			<div class="box-post-item">
+				<article class="post-item" itemscope itemtype="http://schema.org/Article">
+
+
+
+
+					<p class="content-meta">
+						<span class="meta-date" itemprop="datePublished" content="2018-10-21">2018-10-21</span>
+
+
+					</p>
+
+
+					<h2 class="box-content-title">
+						<a href="/2018/10/21/AJAX/"  itemprop="url"><span class="content-title" itemprop="name">AJAX</span></a>
+					</h2>
+
+					<div class="content post-item-content" itemprop="articleBody">
+
+<h3 id="先了解AJAX之前发送请求的几种方法。（src-”-xxx”）"><a href="#先了解AJAX之前发送请求的几种方法。（src-”-xxx”）" class="headerlink" title="先了解AJAX之前发送请求的几种方法。（src=”/xxx”）"></a>先了解AJAX之前发送请求的几种方法。（src=”/xxx”）</h3><p>1，用form表单发送请求，会刷新页面或新开页面；<br>2，用a标签发送请求，但也会刷新页面或新开页面；<br>3，用img标签可以发送请求，只能以图片形式展示；<br>4，用link可以发送请求，只能以css,favicon形式展示；<br>5，用script发送请求，例如：JSONP，但只能以脚本形式执行。<br>以上发送请求的方式只能用 “GET”，有限制性。所以就出现了使用 AJAX发请求。<br>AJAX不仅可是使用GET，还可以使用POST，PUT，DELETE等动词形式，还可以以不同的形式展示。</p>
+<h3 id="AJAX（Asynchronous-Javascript-And-XML）"><a href="#AJAX（Asynchronous-Javascript-And-XML）" class="headerlink" title="AJAX（Asynchronous Javascript And XML）"></a>AJAX（Asynchronous Javascript And XML）</h3><p>即异步的Javascript和Xml。<br>使用AJAX满足三个要求：<br>1，使用XMLHttpResquest发请求；<br>2，服务器返回XML格式的字符串；<br>3，JS解析XML，并更新局部页面。</p>
+<p>手写一个AJAX，只需8行代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpRequest()</span><br><span class="line">  request.open(&apos;get&apos;, &apos;/xxx&apos;) // 配置request</span><br><span class="line">  request.send()</span><br><span class="line">  request.onreadystatechange = ()=&gt;&#123;</span><br><span class="line">    if(request.readyState === 4)&#123;</span><br><span class="line">      if(request.status &gt;= 200 &amp;&amp; request.status &lt; 300)&#123;</span><br><span class="line">        let string = request.responseText</span><br><span class="line">        let object = window.JSON.parse(string)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何使用XMLHttpResquest"><a href="#如何使用XMLHttpResquest" class="headerlink" title="如何使用XMLHttpResquest"></a>如何使用XMLHttpResquest</h3><p>使用XMLHttpResquest发送请求最重要的一句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpResquest()</span><br></pre></td></tr></table></figure></p>
+<p>把XMLHttpResquest通过new变成一个对象；</p>
+<p>第二句配置request：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.open(method,url)</span><br></pre></td></tr></table></figure></p>
+<p>其中open中写http的请求方法和路径<br>method 的值包括GET，POST，PUT，DELETE等。</p>
+<p>第三句监听readyState的状态变化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.onreadystatechange = ()=&gt;&#123;</span><br><span class="line">    if(request.readyState === 4)&#123;</span><br><span class="line">        console.log(&apos;请求响应都完毕了&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第四句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requset.send()</span><br></pre></td></tr></table></figure></p>
+<p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(&apos;click&apos;, (e)=&gt;&#123;</span><br><span class="line">  let request = new XMLHttpRequest()</span><br><span class="line">  request.open(&apos;get&apos;, &apos;/xxx&apos;) // 配置request</span><br><span class="line">  request.send()</span><br><span class="line">  request.onreadystatechange = ()=&gt;&#123;</span><br><span class="line">    if(request.readyState === 4)&#123;</span><br><span class="line">      console.log(&apos;请求响应都完毕了&apos;)</span><br><span class="line">      console.log(request.status)</span><br><span class="line">      if(request.status &gt;= 200 &amp;&amp; request.status &lt; 300)&#123;</span><br><span class="line">        console.log(&apos;说明请求成功&apos;)</span><br><span class="line">        console.log(typeof request.responseText)</span><br><span class="line">        console.log(request.responseText)</span><br><span class="line">        let string = request.responseText</span><br><span class="line">        // 把符合 JSON 语法的字符串</span><br><span class="line">        // 转换成 JS 对应的值</span><br><span class="line">        let object = window.JSON.parse(string) </span><br><span class="line">        // JSON.parse 是浏览器提供的</span><br><span class="line">        console.log(typeof object)</span><br><span class="line">        console.log(object)</span><br><span class="line">        console.log(&apos;object.note&apos;)</span><br><span class="line">        console.log(object.note)</span><br><span class="line"></span><br><span class="line">      &#125;else if(request.status &gt;= 400)&#123;</span><br><span class="line">        console.log(&apos;说明请求失败&apos;) </span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上述代码把服务器返回的XML格式的字符串转换成了JSON格式，因为Xml格式的文件过于麻烦，所以使用了JSON格式来代替它。<br>后端代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#125;else if(path===&apos;/xxx&apos;)&#123;</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;, &apos;text/json;charset=utf-8&apos;)</span><br><span class="line">    response.setHeader(&apos;Access-Control-Allow-Origin&apos;, &apos;http://frank.com:8001&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;note&quot;:&#123;</span><br><span class="line">        &quot;to&quot;: &quot;小谷&quot;,</span><br><span class="line">        &quot;from&quot;: &quot;方方&quot;,               //JSON格式</span><br><span class="line">        &quot;heading&quot;: &quot;打招呼&quot;,</span><br><span class="line">        &quot;content&quot;: &quot;hi&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br></pre></td></tr></table></figure></p>
+<p>AJAX最重要的一点： <strong>只有 “ 协议 + 端口 + 域名 ”一模一样才允许发送AJAX请求！！！</strong></p>
+<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p>因为同源策略的存在，所以只有你的域名端口协议一模一样才能发送这个请求，如果没有就毫无隐私可言。所有浏览器必须保证只有域名端口协议一模一样才允许发送AJAX请求。</p>
+<p>突破同源策略 === 跨域</p>
+<h3 id="CORS-Cross-Origin-Resource-Sharing-跨域资源共享"><a href="#CORS-Cross-Origin-Resource-Sharing-跨域资源共享" class="headerlink" title="CORS(Cross-Origin Resource Sharing)跨域资源共享"></a>CORS(Cross-Origin Resource Sharing)跨域资源共享</h3><p>原理：服务器设置Access-Control-Allow-Origin HTTP响应头之后，浏览器才会允许跨域请求。</p>
+<p>使用AJAX发送请求，如果想再在xxx.com下访问yyy.com 。域名不一样就无法访问，但是可以通过CORS实现跨域请求。<br>在yyy.com的后端代码加上一句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&apos;Access-Control-Allow-Origin&apos;,&apos;http://xxx.com:8001&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>这样xxx.com就能访问yyy.com.实现跨域。就是告诉浏览器这两个是一家的不要阻止访问。</p>
+
+					</div>
+
+
+					<div class="content-tag">
+
+<a class="tag-link" href="/tags/ajax/">ajax</a>
+
+					</div>
+
+
+
+				</article>
+			</div>
+
+		</div>
+
+		<div class="panel-post-nav">
+			<div class="box-post-nav">
+
+
+
+
+					<a href="/2018/10/18/什么是JSONP/" title="什么是JSONP?">Next &rarr;</a>
+
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="layout-footer" style="clear: both">
+		<div class="panel-footer">
+			<div class="box-footer">
+				<footer class="footer">
+					<p class="cr">&copy; 2018 <a href="https://github.com/foreachsam/"  target="_blank" target="_blank">冉奇</a> </p>
+
+					<span class="theme">Powered: <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme: <a href="https://github.com/foreachsam/hexo-theme-monogatari" target="_blank">Monogatari</a></span>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>
