@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title> Cookie | Just For Fun </title>
+	<meta property="og:title" content=" Cookie | Just For Fun " />
+	<meta name="twitter:title" content=" Cookie | Just For Fun ">
+
+	<meta property="og:type" content="article">
+	<meta name="twitter:card" content="summary">
+
+	<meta name="description" content=" Cookie | Just For Fun ">
+	<meta property="og:description" content=" Cookie | Just For Fun " />
+	<meta name="twitter:description" content=" Cookie | Just For Fun " />
+
+	<link rel="icon" type="image/x-icon" href="http://yoursite.com//asset/img/favicon.jpeg">
+
+	<link rel="image_src" href="http://yoursite.com//asset/img/logo.jpeg" >
+	<meta property="og:image" content="http://yoursite.com//asset/img/logo.jpeg" />
+
+	<link href="http://yoursite.com/atom.xml" title="Just For Fun" type="application/atom+xml" rel="alternative">
+
+	<link rel="canonical" href="/2018/11/08/Cookie/index.html">
+
+	<link rel="stylesheet" href="/asset/css/style.css">
+
+</head>
+
+<body>
+
+	<div class="layout-header">
+		<header class="header">
+			<div class="layout-logo">
+				<div class="panel-logo">
+
+					<div class="box-logo">
+						<a href="/" title="Just For Fun"><img src="/asset/img/logo.jpeg" class="img-logo"></a>
+					</div>
+					<div class="box-main-title">
+						<h1><a href="/">Just For Fun</a></h1>
+					</div>
+					<div class="box-sub-title">
+
+					</div>
+				</div>
+			</div>
+			<div class="layout-menu">
+				<div class="box-menu-list">
+					<nav class="page-nav">
+						<ul class="menu-list">
+
+							<li class="box-menu-item"><a href="/"><span class="menu-item">Home</span></a></li>
+
+							<li class="box-menu-item"><a href="/archives"><span class="menu-item">Sitemap</span></a></li>
+
+							<li class="box-menu-item"><a href="/page/"><span class="menu-item">Page</span></a></li>
+
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+		</header>
+	</div>
+
+	<div class="layout-content">
+
+
+		<div class="row panel-content panel-post-item">
+			<div class="box-post-item">
+				<article class="post-item" itemscope itemtype="http://schema.org/Article">
+
+
+
+
+					<p class="content-meta">
+						<span class="meta-date" itemprop="datePublished" content="2018-11-08">2018-11-08</span>
+
+
+					</p>
+
+
+					<h2 class="box-content-title">
+						<a href="/2018/11/08/Cookie/"  itemprop="url"><span class="content-title" itemprop="name">Cookie</span></a>
+					</h2>
+
+					<div class="content post-item-content" itemprop="articleBody">
+
+<h1 id="Cookie是什么？"><a href="#Cookie是什么？" class="headerlink" title="Cookie是什么？"></a>Cookie是什么？</h1><p>1，Cookie是浏览器访问服务器后，服务器传给浏览器的一段数据；<br>2，浏览器保存这段数据，不得轻易删除；<br>2，此后每次浏览器访问该服务器都必须带上这段数据。</p>
+<h1 id="Cookie怎么实现？"><a href="#Cookie怎么实现？" class="headerlink" title="Cookie怎么实现？"></a>Cookie怎么实现？</h1><p>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态，Cookie会根据从服务端发送的响应报文内的一个叫做Set-Cookie的首部字段信息，通知客户端保存Cookie。当下次客户端再往服务端发送请求时，客户端会自动在请求报文中加入保存下来的Cookie的值后在发送请求。服务端发现客户端发送过来的请求中有Cookie后，会检查时哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的一个状态信息。</p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><p>1，在没有Cookie值时客户端（浏览器）发送请求—&gt;服务器生成Cookie并记录是谁发送的—&gt;然后服务器在响应报文中添加Cookie后返回—&gt;客户端保存Cookie。<br>2，第二次发送请求时存下Cooke的客户端在请求中添加Cookie后发送—&gt;服务器检查Cookie（）—&gt;响应返回之前状态的信息给客户端。<br>步骤1没有Cookie时发送请求报文，例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /xxx HTTP/1.1</span><br><span class="line">Host: sp0.baidu.com</span><br><span class="line">...</span><br><span class="line">*请求的首部字段没有Cookie相关信息</span><br></pre></td></tr></table></figure></p>
+<p>响应报文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 ok</span><br><span class="line">Content-Length: 0</span><br><span class="line">Content-Type: image/gif</span><br><span class="line">&lt;Set-Cookie: BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; max-age=86400; domain=.baidu.com; path=/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>步骤2客户端存下Cookie后再次发送的请求报文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /xxx HTTP/1.1</span><br><span class="line">Host: sp0.baidu.com</span><br><span class="line">...</span><br><span class="line">Cookie: BDORZ=B490B5EBF6F3CD402E515D22BCDA1598</span><br></pre></td></tr></table></figure></p>
+<h1 id="Cookie的作用"><a href="#Cookie的作用" class="headerlink" title="Cookie的作用"></a>Cookie的作用</h1><p>1，识别用户身份；<br>比如A用户访问a.com，那么a.com服务器就会返回一段数据给A(uid=1这就是Cookie)，A再次访问a.com会带上(uid=1);<br>比如B用户访问a.com，那么a.com服务器就会返回一段数据给A(uid=2这就是Cookie)，B再次访问a.com会带上(uid=2);<br>那么，a.com的服务器就能区分用户A和B了。<br>2，记录用户的行为。<br>假设一个购物车网站b,用户B[uID=2]，此时他把B1,B2商品加入购物车，[uID=2，CART=B1,B2]，过去了几天，B再次打开b网站，发现商品仍在购物车中，因为浏览器不会轻易删除cookie。</p>
+<p>例子来源于知乎方应杭老师，感谢分享。</p>
+
+					</div>
+
+
+					<div class="content-tag">
+
+<a class="tag-link" href="/tags/http/">http</a>
+
+					</div>
+
+
+
+				</article>
+			</div>
+
+		</div>
+
+		<div class="panel-post-nav">
+			<div class="box-post-nav">
+
+
+
+
+					<a href="/2018/10/21/AJAX/" title="AJAX">Next &rarr;</a>
+
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="layout-footer" style="clear: both">
+		<div class="panel-footer">
+			<div class="box-footer">
+				<footer class="footer">
+					<p class="cr">&copy; 2018 <a href="https://github.com/foreachsam/"  target="_blank" target="_blank">冉奇</a> </p>
+
+					<span class="theme">Powered: <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme: <a href="https://github.com/foreachsam/hexo-theme-monogatari" target="_blank">Monogatari</a></span>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>
