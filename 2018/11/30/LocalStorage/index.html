@@ -6,16 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title> Session | PERSONAL BLOG </title>
-	<meta property="og:title" content=" Session | PERSONAL BLOG " />
-	<meta name="twitter:title" content=" Session | PERSONAL BLOG ">
+	<title> LocalStorage | PERSONAL BLOG </title>
+	<meta property="og:title" content=" LocalStorage | PERSONAL BLOG " />
+	<meta name="twitter:title" content=" LocalStorage | PERSONAL BLOG ">
 
 	<meta property="og:type" content="article">
 	<meta name="twitter:card" content="summary">
 
-	<meta name="description" content=" Session | PERSONAL BLOG ">
-	<meta property="og:description" content=" Session | PERSONAL BLOG " />
-	<meta name="twitter:description" content=" Session | PERSONAL BLOG " />
+	<meta name="description" content=" LocalStorage | PERSONAL BLOG ">
+	<meta property="og:description" content=" LocalStorage | PERSONAL BLOG " />
+	<meta name="twitter:description" content=" LocalStorage | PERSONAL BLOG " />
 
 	<link rel="icon" type="image/x-icon" href="http://yoursite.com//asset/img/favicon.jpeg">
 
@@ -24,7 +24,7 @@
 
 	<link href="http://yoursite.com/atom.xml" title="PERSONAL BLOG" type="application/atom+xml" rel="alternative">
 
-	<link rel="canonical" href="/2018/11/30/Session/index.html">
+	<link rel="canonical" href="/2018/11/30/LocalStorage/index.html">
 
 	<link rel="stylesheet" href="/asset/css/style.css">
 
@@ -85,14 +85,17 @@
 
 
 					<h2 class="box-content-title">
-						<a href="/2018/11/30/Session/"  itemprop="url"><span class="content-title" itemprop="name">Session</span></a>
+						<a href="/2018/11/30/LocalStorage/"  itemprop="url"><span class="content-title" itemprop="name">LocalStorage</span></a>
 					</h2>
 
 					<div class="content post-item-content" itemprop="articleBody">
 
-<h1 id="Session是什么？"><a href="#Session是什么？" class="headerlink" title="Session是什么？"></a>Session是什么？</h1><p> Session实质上就是一块内存，服务器通过Cookie给用户一个sessionID，然后sessionID对应服务器里的一小块内存，每次用户访问服务器时，服务器就通过sessionID去读取对应的那一块内存(即session)，然后就知道了用户的隐私信息如用户名ID，email账号等等。</p>
-<p>  sessionID就是一个随机数，无法被篡改，因此用户的隐私得到了安全保证。</p>
-<h2 id="Cookie与Session的关系"><a href="#Cookie与Session的关系" class="headerlink" title="Cookie与Session的关系"></a>Cookie与Session的关系</h2><p>  session是基于cookie实现的，因为session必须将sessionID放在cookie里然后发送给用户。所以session是依赖于cookie的。</p>
+<p>LocalStorage是Html5提供的一个API，也可以说是浏览器中的一个hsah表。用来保存浏览器中的所有变量。<br>在没有LocalStorage以前，页面刷新之后所有的变量全都会销毁，没办法保留下来，但是有了LocalStorage我们就可以把所有的东西存下来，用来在以后使用。LocalStorage也称持久化存储。LocalStorage保存在C盘的一个文件里。</p>
+<p>LocalStorage的几个方法：<br>如：<code>setItem()</code>, <code>getItem()</code>, <code>clear()</code>等.<br>用getItem setItem来操作</p>
+<p>设值：<br><code>localStorage.setItem(&quot;hello&quot;, &quot;world&quot;);</code><br><code>localStorage.setItem(&quot;zhangsan&quot;, &quot;lisi&quot;);</code><br>取值：<br><code>localStorage.getItem(&quot;hello&quot;);</code><br><code>localStorage.getItem(&quot;zhangsan&quot;);</code></p>
+<p>LocalStorage的特点：<br>1，LocalStorage与HTTP无关。<br>2，HTTP不会带上LocalStorage的值到服务器上去。<br>3，只有相同域名的页面才能互相读取LocalStorage。<br>4，每个域名的LocalStorage最大存储量只有5MB左右，但浏览器不一样。<br>5，常用场景：记录有么有提示过用户<br>6，LocalStorage永久有效，除非用户自己清理。</p>
+<p>另： sessionStorage 也是HTML5新增的一个会话存储对象，用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据。<br>在JavaScript语言中可通过 window.sessionStorage 或 sessionStorage 调用此对象。<br>也有LocalStorage的<code>setItem()</code>, <code>getItem()</code>等方法。</p>
+<p>sessionStorage的特点：<br>同LocalStorage特点的1，2，3，4。<br>唯一不同的是sessionStorage在页面关闭之后就失效。</p>
 
 					</div>
 
@@ -114,11 +117,9 @@
 			<div class="box-post-nav">
 
 
-					<a href="/2018/11/30/LocalStorage/" title="LocalStorage">&larr; Prev</a>
 
 
-
-					<a href="/2018/11/08/Cookie/" title="Cookie">Next &rarr;</a>
+					<a href="/2018/11/30/Session/" title="Session">Next &rarr;</a>
 
 
 			</div>
