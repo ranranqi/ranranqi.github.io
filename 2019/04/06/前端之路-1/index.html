@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title> 前端之路-1 | PERSONAL BLOG </title>
+	<meta property="og:title" content=" 前端之路-1 | PERSONAL BLOG " />
+	<meta name="twitter:title" content=" 前端之路-1 | PERSONAL BLOG ">
+
+	<meta property="og:type" content="article">
+	<meta name="twitter:card" content="summary">
+
+	<meta name="description" content=" 前端之路-1 | PERSONAL BLOG ">
+	<meta property="og:description" content=" 前端之路-1 | PERSONAL BLOG " />
+	<meta name="twitter:description" content=" 前端之路-1 | PERSONAL BLOG " />
+
+	<link rel="icon" type="image/x-icon" href="http://yoursite.com//asset/img/favicon.jpg">
+
+	<link rel="image_src" href="http://yoursite.com//asset/img/logo.jpg" >
+	<meta property="og:image" content="http://yoursite.com//asset/img/logo.jpg" />
+
+	<link href="http://yoursite.com/atom.xml" title="PERSONAL BLOG" type="application/atom+xml" rel="alternative">
+
+	<link rel="canonical" href="/2019/04/06/前端之路-1/index.html">
+
+	<link rel="stylesheet" href="/asset/css/style.css">
+
+</head>
+
+<body>
+
+	<div class="layout-header">
+		<header class="header">
+			<div class="layout-logo">
+				<div class="panel-logo">
+
+					<div class="box-logo">
+						<a href="/" title="PERSONAL BLOG"><img src="/asset/img/logo.jpg" class="img-logo"></a>
+					</div>
+					<div class="box-main-title">
+						<h1 style="text-align: center; font-size: 12px;"<a href="/">路漫漫道阻且长</a></h1>
+					</div>
+					<div class="box-sub-title">
+
+					</div>
+				</div>
+			</div>
+			<div class="layout-menu">
+				<div class="box-menu-list">
+					<nav class="page-nav">
+						<ul class="menu-list">
+
+							<li class="box-menu-item"><a href="/"><span class="menu-item">Home</span></a></li>
+
+							<li class="box-menu-item"><a href="/archives"><span class="menu-item">Sitemap</span></a></li>
+
+							<li class="box-menu-item"><a href="/"><span class="menu-item">Page</span></a></li>
+
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+		</header>
+	</div>
+
+	<div class="layout-content">
+
+
+		<div class="row panel-content panel-post-item">
+			<div class="box-post-item">
+				<article class="post-item" itemscope itemtype="http://schema.org/Article">
+
+
+
+
+					<p class="content-meta">
+						<span class="meta-date" itemprop="datePublished" content="2019-04-06">2019-04-06</span>
+
+
+					</p>
+
+
+					<h2 class="box-content-title">
+						<a href="/2019/04/06/前端之路-1/"  itemprop="url"><span class="content-title" itemprop="name">前端之路-1</span></a>
+					</h2>
+
+					<div class="content post-item-content" itemprop="articleBody">
+
+<h1 id="git-基本操作"><a href="#git-基本操作" class="headerlink" title="git-基本操作"></a>git-基本操作</h1><p>新建分支，合并分支。</p>
+<h2 id="一，git新建分支"><a href="#一，git新建分支" class="headerlink" title="一，git新建分支"></a>一，git新建分支</h2><p>根据不同的工作需求创建自己的分支，在自己的本地分支上开发是一件最基本的操作。<br>首先需要切换到线上分支 master或者别的为线上运行开发创建的分支 dev，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure></p>
+<p>创建新的本地分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch local</span><br></pre></td></tr></table></figure></p>
+<p>切换到自己的本地分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout local</span><br></pre></td></tr></table></figure></p>
+<p>后两步命令也可以使用一行命令代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b local</span><br></pre></td></tr></table></figure></p>
+<p>然后就可以进行新的需求来开发，如修改一些文件，添加一些文件。每次修改或添加的内容最好分别提交一个commit。这样方便查看修改了什么。比如在自己的 local分支上提交了三个commit。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">e1a9b1a (HEAD -&gt; local) add three on loacl</span><br><span class="line">dd8cdca add two on local</span><br><span class="line">b6464a8 add one on local</span><br></pre></td></tr></table></figure></p>
+<h2 id="二，使用git-log来查看自己的提交历史。"><a href="#二，使用git-log来查看自己的提交历史。" class="headerlink" title="二，使用git log来查看自己的提交历史。"></a>二，使用<code>git log</code>来查看自己的提交历史。</h2><p>默认不用任何参数的话，<code>git log</code>会按提交时间列出所有的更新，最新的commit会排在最上面。<br><code>git log</code>常用的一些选项:<br>1，如用<code>--pretty</code>，这个选项可以指定使用不同于默认格式的方式展示提交历史。这个选项还有一些内建的子选项可供使用。如<code>oneline</code>是将每个提交放在一行显示，这在查看提交数很大是非常有用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure></p>
+<p>用<code>format</code>，可以定制要显示的记录格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=format:&quot;%h - %an, %ar: %s - %cn&quot;</span><br><span class="line">82839f1 - ranranqi, 4 months ago: 移动端适配rem - ranranqi</span><br><span class="line">ffaa875 - ranranqi, 4 months ago: session,localStorage - ranranqi</span><br><span class="line">5ee52e4 - ranranqi, 4 months ago: 改title - ranranqi</span><br></pre></td></tr></table></figure></p>
+<p><code>git log --pretty=format</code>常用选项<br>%H  —-   提交对象(commit)的完整哈希字符串。<br>%h  —-   提交对象的简短哈希字符串。<br>%s  —-   提交说明。<br>%an  —-   作者的名字(author)。<br>%ar  —-   作者修订的日期，按多久以前的方式显示。<br>%cn  —-   提交者的名字(committer)。<br>2，使用<code>--graph</code>选项添加了一些ASCII字符串来形象的展示你的分支、合并历史：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --graph</span><br><span class="line">* 2d3acf9 ignore errors from SIGCHLD on trap</span><br><span class="line">*  5e3ee11 Merge branch &apos;master&apos; of git://github.com/dustin/grit</span><br><span class="line">|\</span><br><span class="line">| * 420eac9 Added a method for getting the current branch.</span><br><span class="line">* | 30e367c timeout code and tests</span><br><span class="line">* | 5a09431 add timeout protection to grit</span><br><span class="line">* | e1193f8 support for heads with slashes in them</span><br><span class="line">|/</span><br><span class="line">* d6016bc require time for xmlschema</span><br><span class="line">*  11d191e Merge branch &apos;defunkt&apos; into local</span><br></pre></td></tr></table></figure></p>
+<h2 id="三，git合并分支"><a href="#三，git合并分支" class="headerlink" title="三，git合并分支"></a>三，git合并分支</h2><h3 id="把子分支合并到父分支"><a href="#把子分支合并到父分支" class="headerlink" title="把子分支合并到父分支"></a>把子分支合并到父分支</h3><p>继上所述，我们是在 dev分支下创建的本地 local分支。假如我们在 local分支上产生了三次提交，现在需要把我们本地产生的commit合并到分支 dev上。那么，我们可以这样做：</p>
+<h4 id="1，使用git-merge"><a href="#1，使用git-merge" class="headerlink" title="1，使用git merge"></a>1，使用<code>git merge</code></h4><p>首先切换到分支 dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure></p>
+<p>再合并分支 local<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge local</span><br></pre></td></tr></table></figure></p>
+<p>最后在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></p>
+<p>最终 dev分支上产生的提交历史会是这样，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* e1a9b1a (HEAD -&gt; dev, origin/dev, local) add three on local</span><br><span class="line">* dd8cdca add two on local</span><br><span class="line">* b6464a8 add one on local</span><br></pre></td></tr></table></figure></p>
+<p>最后删除本地分支local<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d/-D loacl</span><br></pre></td></tr></table></figure></p>
+<p>如果我们不小心把本地分支推送到远程了，也可以进行删除操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :loacl</span><br></pre></td></tr></table></figure></p>
+<h4 id="2，使用git-rebase"><a href="#2，使用git-rebase" class="headerlink" title="2，使用git rebase"></a>2，使用<code>git rebase</code></h4><p>在本地分支local上产生三次提交，使用<code>git log --oneline</code>查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">73bc1af (HEAD -&gt; local) add three on local</span><br><span class="line">1eec4e5 add two on local</span><br><span class="line">ca2f4ba add one on local</span><br></pre></td></tr></table></figure></p>
+<p>然后切换到dev分支进行合并<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure></p>
+<p>使用git rebase<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase local</span><br></pre></td></tr></table></figure></p>
+<p>在推送<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></p>
+<p>产生的提交历史：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 73bc1af (HEAD -&gt; dev, origin/dev, local) add three on local</span><br><span class="line">* 1eec4e5 add two on local</span><br><span class="line">* ca2f4ba add one on local</span><br></pre></td></tr></table></figure></p>
+<h3 id="相邻两个分支之间的合并"><a href="#相邻两个分支之间的合并" class="headerlink" title="相邻两个分支之间的合并"></a>相邻两个分支之间的合并</h3><p>例如，我们在如上dev分支下创建了两个分支 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br><span class="line">git branch local</span><br><span class="line">git branch other</span><br></pre></td></tr></table></figure></p>
+<p>local分支和 other分支都在 dev分支下，也就是说在走到dev分支的时候分岔了产生了另外两个分支。两个分支相邻无串联关系。这是如需要把local分支合并到other分支时，又和上面的情况不一样了。如下：</p>
+<h4 id="1，在使用git-merge时会产生新的commit"><a href="#1，在使用git-merge时会产生新的commit" class="headerlink" title="1，在使用git merge时会产生新的commit"></a>1，在使用<code>git merge</code>时会产生新的commit</h4><p>在 local分支上提交一次commit — add four on local<br>切换到 other分支上再提交一次commit — add five on other<br>随后进行合并，把 local分支合并到 other分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge local</span><br></pre></td></tr></table></figure></p>
+<p>查看提交历史会发现多了一次commit，而且还不是线性的，有分岔的现象。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*   36d224e (HEAD -&gt; other) new commit</span><br><span class="line">|\</span><br><span class="line">| * 8e6f800 (local) add four on loal</span><br><span class="line">* | 909f1bd add five on other</span><br><span class="line">|/</span><br><span class="line">* 73bc1af (origin/dev, dev) add three on local</span><br><span class="line">* 1eec4e5 add two on local</span><br><span class="line">* ca2f4ba add one on local</span><br></pre></td></tr></table></figure></p>
+<h4 id="2，使用git-rebase时不会产生新的commit，线性的。"><a href="#2，使用git-rebase时不会产生新的commit，线性的。" class="headerlink" title="2，使用git rebase时不会产生新的commit，线性的。"></a>2，使用<code>git rebase</code>时不会产生新的commit，线性的。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase local</span><br></pre></td></tr></table></figure>
+<p>此时可能会出现这种情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">First, rewinding head to replay your work on top of it...</span><br><span class="line">Applying: add five on other</span><br><span class="line">Using index info to reconstruct a base tree...</span><br><span class="line">M	index.html</span><br><span class="line">Falling back to patching base and 3-way merge...</span><br><span class="line">Auto-merging index.html</span><br><span class="line">CONFLICT (content): Merge conflict in index.html</span><br><span class="line">error: Failed to merge in the changes.</span><br><span class="line">Patch failed at 0001 add five on other</span><br><span class="line">Use &apos;git am --show-current-patch&apos; to see the failed patch</span><br><span class="line"></span><br><span class="line">Resolve all conflicts manually, mark them as resolved with</span><br><span class="line">&quot;git add/rm &lt;conflicted_files&gt;&quot;, then run &quot;git rebase --continue&quot;.</span><br><span class="line">You can instead skip this commit: run &quot;git rebase --skip&quot;.</span><br><span class="line">To abort and get back to the state before &quot;git rebase&quot;, run &quot;git rebase --abort&quot;.</span><br></pre></td></tr></table></figure></p>
+<p>提示我们index.html文件存在冲突，我们需要解决冲突，然后再执行下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  git-demo-1 git:(5ca9aac) ✗ git add .</span><br><span class="line">➜  git-demo-1 git:(5ca9aac) ✗ git rebase --continue</span><br><span class="line">Applying: add five on other</span><br></pre></td></tr></table></figure></p>
+<p>我们查看提交历史，会是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 6c9a4d4 (HEAD -&gt; other) add five on other</span><br><span class="line">* 5ca9aac (local) add four on local</span><br><span class="line">* 73bc1af (origin/dev, dev) add three on local</span><br><span class="line">* 1eec4e5 add two on local</span><br><span class="line">* ca2f4ba add one on local</span><br></pre></td></tr></table></figure></p>
+<p>发现并没有多余的提交信息。<br><br>有时，我们在自己分支上提交了多次的commit，可能有些提交信息并不是那么必要，所以我们可以把这些commits合并为一个commit。这时我们可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~commits_number(提交的次数)</span><br></pre></td></tr></table></figure></p>
+<p>例如：我们想要把前三次的commit信息合成一个，可以这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure></p>
+<p>这是会弹出一个编辑窗口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1   pick 098187e add 1</span><br><span class="line">  1 pick c9a1973 add 2</span><br><span class="line">  2 pick 9f37136 add 3</span><br><span class="line">  3</span><br><span class="line">  4 # Rebase 8e6f800..9f37136 onto 8e6f800 (3 commands)</span><br><span class="line">  5 #</span><br><span class="line">  6 # Commands:</span><br><span class="line">  7 # p, pick = use commit</span><br><span class="line">  8 # r, reword = use commit, but edit the commit message</span><br><span class="line">  9 # e, edit = use commit, but stop for amending</span><br><span class="line"> 10 # s, squash = use commit, but meld into previous commit</span><br><span class="line"> 11 # f, fixup = like &quot;squash&quot;, but discard this commit&apos;s log message</span><br><span class="line"> 12 # x, exec = run command (the rest of the line) using shell</span><br><span class="line"> 13 # d, drop = remove commit</span><br><span class="line"> 14 #</span><br><span class="line"> 15 # These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line"> 16 #</span><br><span class="line"> 17 # If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line"> 18 #</span><br><span class="line"> 19 # However, if you remove everything, the rebase will be aborted.</span><br><span class="line"> 20 #</span><br><span class="line"> 21 # Note that empty commits are commented out</span><br><span class="line">~</span><br><span class="line">~</span><br></pre></td></tr></table></figure></p>
+<p>这时我们把<code>add 3</code>、<code>add 2</code> 提交信息前的<code>pick</code> 改为<code>squash</code>或缩写<code>s</code>。如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1   pick 098187e add 1</span><br><span class="line">  1 squash c9a1973 add 2</span><br><span class="line">  2 squash 9f37136 add 3</span><br><span class="line">  3</span><br><span class="line">  4 # Rebase 8e6f800..9f37136 onto 8e6f800 (3 commands)</span><br><span class="line">  5 #</span><br><span class="line">  6 # Commands:</span><br><span class="line">  7 # p, pick = use commit</span><br><span class="line">  8 # r, reword = use commit, but edit the commit message</span><br><span class="line">  9 # e, edit = use commit, but stop for amending</span><br><span class="line"> 10 # s, squash = use commit, but meld into previous commit</span><br><span class="line"> 11 # f, fixup = like &quot;squash&quot;, but discard this commit&apos;s log message</span><br><span class="line"> 12 # x, exec = run command (the rest of the line) using shell</span><br><span class="line"> 13 # d, drop = remove commit</span><br><span class="line"> 14 #</span><br><span class="line"> 15 # These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line"> 16 #</span><br><span class="line"> 17 # If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line"> 18 #</span><br><span class="line"> 19 # However, if you remove everything, the rebase will be aborted.</span><br><span class="line"> 20 #</span><br><span class="line"> 21 # Note that empty commits are commented out</span><br><span class="line">~</span><br><span class="line">~</span><br></pre></td></tr></table></figure></p>
+<p>然后<code>:wq</code>保存退出，回弹出新的编辑窗口，输入们新的commit信息，删掉之前的提交信息在保存退出就好了。<br>我们在查看提交历史会发现我们之前的三次commits变成了一个新的commit，也就是刚输入的commit 信息。<br>在与其他分支合并就OK了！</p>
+<p>博大精深的<code>git</code>，未完待续……</p>
+
+					</div>
+
+
+					<div class="content-tag">
+
+<a class="tag-link" href="/tags/git/">git</a>
+
+					</div>
+
+
+
+				</article>
+			</div>
+
+		</div>
+
+		<div class="panel-post-nav">
+			<div class="box-post-nav">
+
+
+
+
+					<a href="/2018/12/10/移动端适配之rem方案/" title="移动端适配之rem方案">Next &rarr;</a>
+
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="layout-footer" style="clear: both">
+		<div class="panel-footer">
+			<div class="box-footer">
+				<footer class="footer">
+					<p class="cr">&copy; 2019 <a href="https://github.com/foreachsam/"  target="_blank" target="_blank">冉奇</a> </p>
+
+					<span class="theme">Powered: <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme: <a href="https://github.com/foreachsam/hexo-theme-monogatari" target="_blank">Monogatari</a></span>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>
